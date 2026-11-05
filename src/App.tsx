@@ -12,103 +12,11 @@ import {
 } from "lucide-react";
 import "./App.css";
 import Scene3D from "./Scene3D";
+import BurgerExplode from "./BurgerExplode";
+import { products } from "./data";
+
 gsap.registerPlugin(ScrollTrigger);
 
-type Product = {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  image: string;
-  description: string;
-  tag?: string;
-};
-
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Iced Matcha Latte",
-    category: "Matcha",
-    price: 450,
-    image:
-      "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=800&q=85",
-    description: "Creamy matcha, chilled milk and a little magic.",
-    tag: "BESTSELLER",
-  },
-  {
-    id: 2,
-    name: "Caramel Iced Coffee",
-    category: "Coffee",
-    price: 380,
-    image:
-      "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=85",
-    description: "Bold espresso with silky caramel.",
-    tag: "FAN FAVOURITE",
-  },
-  {
-    id: 3,
-    name: "Chocolate Brownie",
-    category: "Dessert",
-    price: 320,
-    image:
-      "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=85",
-    description: "Rich, fudgy chocolate in every bite.",
-    tag: "MUST TRY",
-  },
-  {
-    id: 4,
-    name: "Classic Cappuccino",
-    category: "Coffee",
-    price: 350,
-    image:
-      "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=85",
-    description: "Fresh espresso topped with silky foam.",
-  },
-  {
-    id: 5,
-    name: "Strawberry Matcha",
-    category: "Matcha",
-    price: 490,
-    image:
-      "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=800&q=85",
-    description: "Earthy matcha meets sweet strawberry.",
-    tag: "NEW",
-  },
-  {
-    id: 6,
-    name: "Smash Beef Burger",
-    category: "Burgers",
-    price: 650,
-    image:
-      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=85",
-    description: "Juicy beef, melted cheese and house sauce.",
-  },
-  {
-    id: 7,
-    name: "Classic Pepperoni Pizza",
-    category: "Pizza",
-    price: 850,
-    image:
-      "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=85",
-    description: "Golden crust, rich sauce and cheesy goodness.",
-  },
-  {
-    id: 8,
-    name: "Loaded French Fries",
-    category: "Sides",
-    price: 280,
-    image:
-      "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=85",
-    description: "Crispy fries with our signature seasoning.",
-  },
-];
-const anatomy = [
-  { name: "Paper straw", note: "Eco-friendly and never soggy", top: 19, side: "right" },
-  { name: "Crystal ice", note: "Hand-cubed, slow melting", top: 35, side: "left" },
-  { name: "Ceremonial matcha", note: "Whisked smooth, earthy and sweet", top: 46, side: "right" },
-  { name: "Chilled milk", note: "Creamy, cold, full-fat", top: 58, side: "left" },
-  { name: "Tall glass", note: "Served ice-cold", top: 78, side: "right" },
-];
 function App() {
   const heroRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -224,9 +132,8 @@ function App() {
   };
 
   return (
-  <>
-    <Scene3D />
-    <header className="site-header"></header>
+    <>
+      <Scene3D />
       <header className="site-header">
         <nav className="nav-inner">
           <a href="#home" className="brand">
@@ -336,26 +243,9 @@ function App() {
             <span className="welcome-doodle">made with ♥ daily</span>
           </div>
         </section>
-<section className="explode-section" id="anatomy">
-  <div className="explode-heading">
-    <span className="eyebrow">INSIDE OUR #1 BESTSELLER</span>
-    <h2>
-      Iced Matcha <em>Latte.</em>
-    </h2>
-    <p>Keep scrolling and watch it come apart.</p>
-  </div>
 
-  {anatomy.map((item) => (
-    <div
-      key={item.name}
-      className={`explode-label ${item.side}`}
-      style={{ top: `${item.top}vh` }}
-    >
-      <strong>{item.name}</strong>
-      <span>{item.note}</span>
-    </div>
-  ))}
-</section>
+        <BurgerExplode />
+
         <section className="bestsellers-section section-pad" id="bestsellers">
           <div className="section-heading reveal">
             <div>

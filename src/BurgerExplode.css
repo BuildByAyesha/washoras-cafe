@@ -1,0 +1,60 @@
+.explode-section {
+  height: 100svh;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, #fffaf1 0%, #efe5d6 70%);
+}
+.explode-heading { position: absolute; top: 14vh; left: 6%; max-width: 360px; z-index: 2; }
+.explode-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  font-weight: 500;
+  margin: 18px 0;
+}
+.explode-heading h2 em { color: var(--orange); }
+.explode-heading p { font-size: 13px; line-height: 1.9; color: var(--muted); }
+
+.burger-stage { position: absolute; inset: 0; pointer-events: none; --size: clamp(90px, 13vh, 104px); }
+.burger-whole {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: min(420px, 70vw);
+  aspect-ratio: 1;
+  height: auto;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: 0 30px 60px rgba(51, 39, 31, .25);
+}
+.burger-layer { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.burger-layer > img {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  left: calc(var(--size) / -2);
+  top: calc(var(--size) / -2);
+  border-radius: 50%;
+  border: 3px solid var(--paper);
+  box-shadow: 0 12px 28px rgba(51, 39, 31, .28);
+}
+.layer-label { position: absolute; top: 0; width: 230px; transform: translateY(-50%); opacity: 0; }
+.layer-label.right { left: calc(var(--size) / 2 + 34px); }
+.layer-label.left { right: calc(var(--size) / 2 + 34px); text-align: right; }
+.layer-label strong { display: block; font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; }
+.layer-label span { font-size: 12px; color: var(--muted); }
+.layer-label::after { content: ''; position: absolute; top: 50%; width: 26px; height: 1px; background: var(--orange); }
+.layer-label.right::after { left: -30px; }
+.layer-label.left::after { right: -30px; }
+
+@media (max-width: 700px) {
+  .explode-heading { top: 8vh; max-width: 80%; }
+  .layer-label { width: 34vw; }
+  .layer-label strong { font-size: 15px; }
+  .layer-label span { display: none; }
+  .layer-label.right { left: calc(var(--size) / 2 + 22px); }
+  .layer-label.left { right: calc(var(--size) / 2 + 22px); }
+  .layer-label::after { width: 14px; }
+  .layer-label.right::after { left: -18px; }
+  .layer-label.left::after { right: -18px; }
+}
